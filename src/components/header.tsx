@@ -1,84 +1,122 @@
-'use client'; // Directive pour indiquer que c'est un composant client
+"use client"
 
-import Link from 'next/link';
-import { useState } from 'react';
+import { useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { Mail, MapPin, Phone, Menu, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white shadow-md">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-blue-600">
-          ENYWORK
-        </Link>
+    <header className="w-full">
+      {/* Top Header */}
+      <div className="bg-gradient-to-r from-[#320001] to-[#BD2222] py-2 hidden md:block px-15">
+        <div className="container-custom flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4 text-white" />
+            <span className="text-xs font-thin tracking-wide  text-white">contact@enywork.com</span>
+          </div>
 
-        {/* Menu Hamburger pour mobile */}
-        <button className="md:hidden" onClick={toggleMenu}>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            ></path>
-          </svg>
-        </button>
+          <div className="flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-white" />
+            <span className="text-xs tracking-wide font-thin text-white">
+              Ancienne Galerie Présidentielle, 6è niveau, Local 6B8, Kinshasa/Gombe
+            </span>
+          </div>
 
-        {/* Navigation */}
-        <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:block`}>
-          <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0">
-            <li>
-              <Link href="/" className="text-gray-700 hover:text-blue-600">
-                Accueil
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600">
-                À propos
-              </Link>
-            </li>
-            <li>
-              <Link href="/realisations" className="text-gray-700 hover:text-blue-600">
-                Réalisations
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="text-gray-700 hover:text-blue-600">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/team" className="text-gray-700 hover:text-blue-600">
-                Équipe
-              </Link>
-            </li>
-            <li>
-              <Link href="/blogs" className="text-gray-700 hover:text-blue-600">
-                Blogs
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600">
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </nav>
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4 text-white" />
+            <span className="text-xs tracking-wide font-thin text-white">+243 899 467 398</span>
+          </div>
+        </div>
       </div>
-    </header>
-  );
-};
 
-export default Header;
+      {/* Main Header */}
+      <div className="py-4 shadow-sm">
+        <div className="container-custom flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" className="relative h-[60px] w-[151px]">
+            <Image src="/placeholder.svg?height=60&width=151" alt="Enywork Logo" width={151} height={60} priority />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-5">
+            <Link href="/" className="text-secondary border-b border-primary px-1 py-1.5">
+              ACCUEIL
+            </Link>
+            <span className="text-dark-secondary h-3 w-px">|</span>
+            <Link href="/a-propos" className="text-secondary hover:text-primary transition-colors">
+              A PROPOS
+            </Link>
+            <span className="text-dark-secondary h-3 w-px">|</span>
+            <Link href="/realisations" className="text-secondary hover:text-primary transition-colors">
+              RÉALISATIONS
+            </Link>
+            <span className="text-dark-secondary h-3 w-px">|</span>
+            <Link href="/services" className="text-secondary hover:text-primary transition-colors">
+              SERVICES
+            </Link>
+            <span className="text-dark-secondary h-3 w-px">|</span>
+            <Link href="/equipe" className="text-secondary hover:text-primary transition-colors">
+              ÉQUIPE
+            </Link>
+            <span className="text-dark-secondary h-3 w-px">|</span>
+            <Link href="/blogs" className="text-secondary hover:text-primary transition-colors">
+              BLOGS
+            </Link>
+          </nav>
+
+          {/* Contact Button & Mobile Menu */}
+          <div className="flex items-center gap-4">
+            <Link href="/contact" className="hidden md:flex btn-primary">
+              <span>CONTACT</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden rounded-full"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <Menu className="w-5 h-5" />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden bg-white shadow-md py-4">
+          <div className="container-custom flex flex-col gap-4">
+            <Link href="/" className="text-secondary hover:text-primary transition-colors py-2 border-b">
+              ACCUEIL
+            </Link>
+            <Link href="/a-propos" className="text-secondary hover:text-primary transition-colors py-2 border-b">
+              A PROPOS
+            </Link>
+            <Link href="/realisations" className="text-secondary hover:text-primary transition-colors py-2 border-b">
+              RÉALISATIONS
+            </Link>
+            <Link href="/services" className="text-secondary hover:text-primary transition-colors py-2 border-b">
+              SERVICES
+            </Link>
+            <Link href="/equipe" className="text-secondary hover:text-primary transition-colors py-2 border-b">
+              ÉQUIPE
+            </Link>
+            <Link href="/blogs" className="text-secondary hover:text-primary transition-colors py-2 border-b">
+              BLOGS
+            </Link>
+            <Link href="/contact" className="btn-primary self-start">
+              <span>CONTACT</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  )
+}
+
