@@ -1,11 +1,15 @@
 import Header from '@/components/header';
+import TopHeader from '@/components/topheader';
 
 
 
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <div>
+        <TopHeader/>
+        <Header />
+      </div>
       {/* <main className="flex-grow">
         <HeroSection />
         <AboutSection />

@@ -1,4 +1,4 @@
-'use client'
+'use client'; // Directive pour indiquer que c'est un composant client
 
 import Link from 'next/link';
 import { useState } from 'react';
