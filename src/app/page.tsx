@@ -1,8 +1,7 @@
-import AboutSection from '@/components/about-section';
+// import AboutSection from '@/components/about-section';
 import Header from '@/components/header';
 import HeroSection from '@/components/hero-section';
-import TopHeader from '@/components/topheader';
-import { Menu, ArrowRight } from "lucide-react";
+
 
 
 
@@ -14,7 +13,7 @@ const Home: React.FC = () => {
       </div>
       <main className="flex-grow">
         <HeroSection />
-        <AboutSection />
+        {/* <AboutSection /> */}
         {/* <ServicesSection /> */}
         {/* <RealisationsSection /> */}
         {/* <TeamSection /> */}
