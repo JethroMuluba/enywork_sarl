@@ -1,3 +1,4 @@
+import AboutSection from '@/components/about-section';
 import Header from '@/components/header';
 import TopHeader from '@/components/topheader';
 
@@ -10,17 +11,17 @@ const Home: React.FC = () => {
         <TopHeader/>
         <Header />
       </div>
-      {/* <main className="flex-grow">
-        <HeroSection />
+      <main className="flex-grow">
+        {/* <HeroSection /> */}
         <AboutSection />
-        <ServicesSection />
-        <RealisationsSection />
-        <TeamSection />
-        <TestimonialsSection />
-        <BlogSection />
-        <ContactSection />
+        {/* <ServicesSection /> */}
+        {/* <RealisationsSection /> */}
+        {/* <TeamSection /> */}
+        {/* <TestimonialsSection /> */}
+        {/* <BlogSection /> */}
+        {/* <ContactSection /> */}
       </main>
-      <Footer /> */}
+      {/* <Footer /> */}
     </div>
   );
 };
