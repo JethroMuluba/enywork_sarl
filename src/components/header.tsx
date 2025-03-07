@@ -6,9 +6,11 @@ import Image from "next/image"
 import { Mail, MapPin, Phone, Menu, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import TopHeader from "./topheader"
+import data from "@/data/data.json"
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const logo = data.header[0].logo || '/default-image-path.svg';
 
   return (
     <header className="w-full">
@@ -16,11 +18,11 @@ export default function Header() {
       <TopHeader />
 
       {/* Main Header */}
-      <div className="py-4 shadow-sm">
+      <div className="py-4 shadow-sm px-15">
         <div className="container-custom flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="relative h-[60px] w-[151px]">
-            <Image src="/placeholder.svg?height=60&width=151" alt="Enywork Logo" width={151} height={60} priority />
+            <Image src={logo} alt="Enywork Logo" width={151} height={60} priority />
           </Link>
 
           {/* Desktop Navigation */}
